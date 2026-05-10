@@ -1,0 +1,13 @@
+{
+  "name": "nosql-injection-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node src/app.js",
+    "install-and-run": "npm install && node src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongodb": "^6.14.0",
+    "dotenv": "^16.4.7"
+  }
+}

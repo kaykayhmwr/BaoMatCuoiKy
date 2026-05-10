@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoSQL Injection Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>SECURE_LOGIN_v1.0</h2>
+        <div class="input-group">
+            <label for="username">USERNAME</label>
+            <input type="text" id="username" placeholder="Enter username..." autocomplete="off">
+        </div>
+        <div class="input-group">
+            <label for="password">PASSWORD</label>
+            <input type="text" id="password" placeholder="Enter password or payload...">
+        </div>
+        <button id="loginBtn">AUTHENTICATE</button>
+        
+        <div id="resultArea" class="result-area hidden">
+            <p id="statusMsg"></p>
+            <pre id="jsonOutput"></pre>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

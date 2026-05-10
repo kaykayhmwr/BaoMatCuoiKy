@@ -1,0 +1,97 @@
+body {
+    background-color: #5c5ca4;
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #5c5ca4;
+    padding: 2rem;
+    border: 2px solid  #0f0f12;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(92, 92, 164, 0.3);
+    width: 400px;
+}
+
+h2 {
+    color: #0f0f12;
+    text-align: center;
+    margin-top: 0;
+    letter-spacing: 2px;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: #0f0f12;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    background-color: #252530;
+    border: 1px solid #333;
+    color: #5c5ca4;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #5c5ca4;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0f0f12;
+    border: none;
+    color: #5c5ca4;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 4px;
+}
+
+button:hover {
+    color:#0f0f12;
+    background-color: #4a4a8a;
+    box-shadow: 0 0 15px #0f0f12;
+}
+
+.result-area {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #333;
+    font-size: 0.85rem;
+}
+
+.hidden {
+     display: none; 
+}
+
+#jsonOutput {
+    background: #000;
+    padding: 10px;
+    color: #00ff00;
+    overflow-x: auto;
+    border-radius: 4px;
+}
+
+.success { 
+    background-color: #00ff00; 
+    color: black;
+}
+.error {
+    color: black; 
+    background-color: red;}
