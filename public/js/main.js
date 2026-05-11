@@ -13,7 +13,8 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch('/api/auth/login', {
+        const apiEndpoint = document.getElementById('endpointSelect').value;
+        const response = await fetch(apiEndpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
