@@ -1,4 +1,6 @@
-document.getElementById('loginBtn').addEventListener('click', async () => {
+const loginBtn = document.getElementById('loginBtn');
+
+loginBtn.addEventListener('click', async () => {
     const username = document.getElementById('username').value;
     const passwordRaw = document.getElementById('password').value;
     const resultArea = document.getElementById('resultArea');
@@ -23,9 +25,14 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
         const result = await response.json();
         resultArea.classList.remove('hidden');
 
-        if (response.ok) {
+        const loginSuccess = response.ok && (result.success !== false);
+
+        if (loginSuccess) {
             statusMsg.textContent = "[+] ACCESS GRANTED";
             statusMsg.className = "success";
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 800);
         } else {
             statusMsg.textContent = "[-] ACCESS DENIED";
             statusMsg.className = "error";
@@ -34,5 +41,6 @@ document.getElementById('loginBtn').addEventListener('click', async () => {
 
     } catch (error) {
         alert("Server error, check console!");
+        console.error(error);
     }
 });

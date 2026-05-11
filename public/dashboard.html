@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - blonelib</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <video id="dashboardVideo" autoplay muted loop playsinline>
+        <source src="css/BACKGROUND2.mp4" type="video/mp4">
+    </video>
+
+    <div class="dashboard-container">
+        <div class="dashboard-corner top-left">
+            <span>KAYKAY</span>
+        </div>
+        <div class="dashboard-corner top-right">
+            <span>STRAWBERRYBANANASMOOTHIE</span>
+        </div>
+        <div class="dashboard-corner bottom-left">
+            <span>℗&© 2026 blonelib. ALL RIGHTS RESERVED.</span>
+        </div>
+        <div class="dashboard-corner bottom-right">
+            <span>SWEET&SOUR - THE 2ND ALBUM</span>
+        </div>
+        <div class="dashboard-center-text">
+            <h1>blonelib</h1>
+            <button id="logoutBtn" style="margin-top: 2rem; padding: 10px 30px; background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.28); color: #000; font-family: 'aespa', monospace; cursor: pointer; border-radius: 8px; font-size: 0.9rem; letter-spacing: 0.1em;">LOGOUT</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
