@@ -1,28 +1,84 @@
+@font-face {
+    font-family: 'font';
+    src: url('font.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'aespa';
+    src: url('aespa.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    background-color: #5c5ca4;
-    color: #e0e0e0;
-    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'font', 'Courier New', Courier, monospace;
+    color: #ffffff;
+    overflow: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    position: relative;
+    background: #000;
+}
+
+#backgroundVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
 }
 
 .login-container {
-    background-color: #5c5ca4;
-    padding: 2rem;
-    border: 2px solid  #0f0f12;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(92, 92, 164, 0.3);
+    position: relative;
+    z-index: 1;
     width: 400px;
+    max-width: 92vw;
+    padding: 2rem;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 30px 80px rgba(98, 69, 144, 0.28);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
+    border-radius: 28px;
 }
 
 h2 {
-    color: #0f0f12;
+    font-size: 4rem;
+    font-family: 'aespa', 'Courier New', Courier, monospace;
+    color: #000000;
     text-align: center;
     margin-top: 0;
+    margin-bottom: -3px;
     letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+    font-weight: normal;
+}
+
+.demo-selector,
+.input-group,
+.result-area,
+button {
+    font-family: 'aespa', 'Courier New', Courier, monospace;
+    font-size: 1.25rem;
+    position: relative;
+    z-index: 1;
 }
 
 .input-group {
@@ -30,50 +86,71 @@ h2 {
 }
 
 label {
+    font-family: 'aespa', Courier, monospace;
     display: block;
     margin-bottom: 0.5rem;
-    font-size: 0.8rem;
-    color: #0f0f12;
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.85);
 }
 
-input {
+label[for="password"] {
+    font-weight: bold;
+    color: #000000;
+}
+
+label[for="username"] {
+    font-weight: bold;
+    color: #000000;
+}
+
+input,
+select {
+    font-family: 'font';
     width: 100%;
-    padding: 10px;
-    background-color: #252530;
-    border: 1px solid #333;
-    color: #5c5ca4;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #000000;
     box-sizing: border-box;
-    border-radius: 4px;
+    transition: border-color 0.25s ease, background 0.25s ease;
 }
 
-input:focus {
+input::placeholder {
+    color: rgba(87, 87, 87, 0.6);
+}
+
+input:focus,
+select:focus {
     outline: none;
-    border-color: #5c5ca4;
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.14);
 }
 
 button {
     width: 100%;
-    padding: 12px;
-    background-color: #0f0f12;
-    border: none;
-    color: #5c5ca4;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #000000;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 4px;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 16px;
 }
 
 button:hover {
-    color:#0f0f12;
-    background-color: #4a4a8a;
-    box-shadow: 0 0 15px #0f0f12;
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.18);
 }
 
 .result-area {
     margin-top: 20px;
     padding: 10px;
-    border-top: 1px solid #333;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
     font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .hidden {
@@ -81,17 +158,19 @@ button:hover {
 }
 
 #jsonOutput {
-    background: #000;
+    background: rgba(0, 0, 0, 0.55);
     padding: 10px;
-    color: #00ff00;
+    color: #b2ffb2;
     overflow-x: auto;
-    border-radius: 4px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .success { 
-    background-color: #00ff00; 
-    color: black;
+    background-color: rgba(0, 255, 0, 0.20); 
+    color: #000000;
 }
 .error {
-    color: black; 
-    background-color: red;}
+    color: #000000; 
+    background-color: rgba(255, 0, 0, 0.22);
+}

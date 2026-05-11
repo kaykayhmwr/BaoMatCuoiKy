@@ -107,7 +107,7 @@ curl -X POST http://localhost:3000/login-script \
 # JS injection (always true)
 curl -X POST http://localhost:3000/login-script \
 -H "Content-Type: application/json" \
--d '{"username": "admin_hien", "password": "1==1"}'
+-d '{"username": "admin_hien", "password": "' || '1'=='1"}'
 ```
 
 #### Snippet 4: Secure Mitigation (Type Checking) (/login-secure) - Blocks Injection

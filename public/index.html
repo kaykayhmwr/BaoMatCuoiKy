@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <video id="backgroundVideo" autoplay muted loop playsinline>
+        <source src="css/BACKGROUND.mp4" type="video/mp4">
+    </video>
+
     <div class="login-container">
-        <h2>SECURE_LOGIN_v1.0</h2>
+        <h2>blondelib</h2>
         <div class="demo-selector" style="margin-bottom: 20px;">
-            <label for="endpointSelect"><strong>Chọn kịch bản Demo:</strong></label>
+            <label for="endpointSelect"><strong>DEMO SCRIPT</strong></label>
             <select id="endpointSelect" class="form-control">
-                <option value="/login">1. Vulnerable (Logic Bypass $gt)</option>
-                <option value="/login-regex">2. Blind Regex Injection</option>
-                <option value="/login-script">3. JS Injection ($where)</option>
-                <option value="/login-secure">4. Secure (Đã vá lỗi)</option>
+                <option value="/login">1 - Vulnerable (Logic Bypass $gt)</option>
+                <option value="/login-regex">2 - Blind Regex Injection</option>
+                <option value="/login-script">3 - JS Injection ($where)</option>
+                <option value="/login-secure">4 - Secure</option>
             </select>
         </div>
         <div class="input-group">
