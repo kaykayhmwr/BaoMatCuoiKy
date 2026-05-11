@@ -75,7 +75,7 @@ h2 {
 .input-group,
 .result-area,
 button {
-    font-family: 'aespa', 'Courier New', Courier, monospace;
+    font-family: 'font', 'Courier New', Courier, monospace;
     font-size: 1.25rem;
     position: relative;
     z-index: 1;
